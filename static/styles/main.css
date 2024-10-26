@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+}
+
+
+
+/* slide */
+.slide-img {
+  background-repeat: no-repeat;
+  background-image: url("../img/1.jpg");
+  background-position: center 25%;
+  background-size: cover;
+  filter: blur(20px);
+  -webkit-filter: blur(20px);
+  -o-filter: blur(20px);
+  -moz-filter:blur(20px);
+  -ms-filter: blur(20px)    ;
+  height: 100vh;
+}
+.small-img {
+  z-index: 1;
+  height: 50vh;
+  border-radius: 30px;
+  position: absolute;
+  right: 10vw;
+  top: calc(25vh + 45px);
+}
+
+h2 {
+  padding: 10px;
+  margin-top: 30px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  font-weight: 600;
+  font-size: 3rem;
+  text-align: center;
+}
+/* product-list */
+.product-list {
+  margin: auto;
+  width: 1380px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 80px 0px;
+}
+
+.container {
+  width: 300px;
+  box-shadow: 2px 2px 10px rgb(0, 19, 5);
+  margin: 15px 15px 15px 15px;
+  transition: 0.5s;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+.container:hover {
+  transform: scale(1.01);
+  box-shadow: 2px 2px 20px rgb(0, 19, 5);
+  cursor: pointer;
+}
+.container p {
+  margin: 5px;
+  font-size: 18px;
+}
+.product-list .container .img-box{
+  height: 60%;
+  text-align: center;
+  background-color: rgb(35, 35, 35);
+  img {
+    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+.product-list .container .textbox {
+  flex-grow: 1;
+  padding: 5px;
+  text-decoration: none;
+  color: rgb(0, 19, 5);
+}
+.product-section .seemore{
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  background-color: rgb(0, 19, 5);
+  display: block;
+  width: 100px;
+  margin: 20px auto;
+  padding: 10px;
+  transition: .3s;
+}
+.product-section .seemore:hover{
+  background-color: rgb(5, 114, 34);
+}
+
+
+
+

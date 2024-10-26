@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>111213015 蔡昇佑</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='/styles/login.css') }}"/>
+    </head>
+    <body>
+        <div class="container">
+            <div class="loginBlock">
+                <div class="back" onClick="history.back()"> &lt; back</div>
+                <form action="/check" method="post">
+                    <h1>Hello Wellcome!</h1>
+                    <div class="account">
+                        <h3>Account:</h3>
+                        <input type="text" name="ACC" required/>
+                    </div>
+                    <br />
+                    <div class="account">
+                        <h3>Password:</h3>
+                        <input type="password" name="PWD" required/>
+                    </div>
+                    {% with messages=get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <p style="color:red; font-size:13px; text-align:left;width:100%">{{message}}</p>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    <br />
+                    <button type="submit" id="submit">Sign In</button>
+                    <p class="sign-up-text">
+                        Don't have a account?&nbsp;&nbsp;<a href="/register">Sign up</a>
+                    </p>
+                </form>
+            </div>
+            <div class="split"></div>
+        </div>
+    </body>
+</html>    
+    

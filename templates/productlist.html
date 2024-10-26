@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>111213015 蔡昇佑</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/styles/product.css') }}" />
+  </head>
+  <body>
+    <section class="product-section">
+      <h1>{{list_title}}</h1>
+      <div class="product-list">
+          {% for item in data %}
+          <a href="/item/{{item.item_id }}">
+            <div class="container">
+              <div class="img-box">
+                <img src="{{ url_for('static', filename='/img/'+item.item_id|string+'.jpg') }}" alt="{{item.item_name}}" />
+              </div>
+              <div class="textbox">
+                <p>{{item.item_name}}</p>
+                {% if item.max_price %}
+                <p class="price">${{item.max_price}}</p>
+                {% else %}
+                <p class="price">${{item.start_price}}</p>
+                {% endif %}
+                <p>{{item.bid_count}} bid</p>
+                <p>{{item.start_time}}</p>
+              </div>
+            </div>
+          </a>
+          {% endfor %}
+          {% if list_title == "My Product"%}
+          <a href="/additem">
+            <div class="container add">
+                <div class="add-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="48" width="42" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z"/></svg>
+                </div>
+                <p>Add Item</p>
+            </div>
+          </a>
+          {% endif %}
+      </div>
+    </section>
+  </body>
+</html>

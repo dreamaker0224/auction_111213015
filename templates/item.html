@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>111213015 蔡昇佑</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/styles/item.css') }}" />
+  </head>
+  <body>
+    {% include "navbar.html" %}
+    <section class="item-frame">
+      <div class="back" onClick="history.back()"> &lt; back</div>
+      <div class="container">
+        <div class="left">
+          <img src="{{ url_for('static', filename='./img/' + item.item_id|string + '.jpg') }}" alt="{{item.item_name}}" class="img-box" />
+        </div>
+        <div class="right">
+          <form action="/bid" method="post" class="content">
+            <h1>{{item.item_name}}</h1>
+            {% if item.max_price %}
+            <p class="price">${{item.max_price}}</p>
+            {% else %}
+            <p class="price">${{item.start_price}}</p>
+            {% endif %}
+            <p class="description"><b>Dynasty:</b>&nbsp&nbsp&nbsp&nbsp{{item.dynasty}}</p>
+            <p class="description"><b>Meterial:</b>&nbsp&nbsp&nbsp&nbsp{{item.material}}</p>
+            <p class="description"><b>Description:</b><br/>{{item.description}}</p>
+            <p class="time">{{time - item.start_time}}</p>
+            {% if item.user_id == login%}
+            {% else %}
+            <div class="bid-box">
+              <input type="number" name="PRICE" id="bid-input" />
+              <input type="hidden" name="ITEM" value="{{item.item_id}}"/>
+              <button type="submit" id="bid-button">Bid</button>
+            </div>
+            {% endif %}
+            {% with messages=get_flashed_messages() %}
+              {% if messages %}
+                  {% for message in messages %}
+                      <p style="color:red; font-size:13px; text-align:left;width:100%">{{message}}</p>
+                  {% endfor %}
+              {% endif %}
+            {% endwith %}
+            <p class="bid">{{bid|length}} bid</p>
+            <p class="user">Produt from {{item.user_name}}</p>
+          </form>
+
+          {% if item.user_id == login%}
+          <div class="revise-delete-box">
+            <form action="/revise/{{item.item_id}}" method="post">
+              <button type="submit"  class="revise">Revise</button>
+              <input type="hidden" name="ITEM_ID" value={{item.item_id}}/>
+            </form>
+            <form action="/delete/{{item.item_id}}" method="post">
+              <button type="submit"  class="delete">Delete</button>
+              <input type="hidden" name="ITEM_ID" value={{item.item_id}}/>
+            </form>
+          </div>
+          {% endif %}
+
+
+
+          
+        </div>
+      </div>
+      <h2>Bid History</h2>
+        <div class="table-box">
+          <table class="bid-detail-content">
+            <tr>
+              <th>Time</th>
+              <th></th>
+              <th>Price</th>
+              <th></th>
+              <th>User</th>
+            </tr>
+            {% for each_bid in bid %}
+              <tr>
+                <td>{{each_bid.bid_time}}</td>
+                <td></td>
+                <td>{{each_bid.bid_price}}</td>
+                <td></td>
+                <td style="text-align:center;">{{each_bid.user_name}}</td>
+              </tr>
+            {% endfor %}
+          </table>
+        </div>
+    </section>
+    {% include "bottom.html" %}
+  </body>
+</html>

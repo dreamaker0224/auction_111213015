@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none; 
+}
+
+.item-frame{
+    width: 1200px;
+    padding-bottom: 70px;
+    margin: auto;
+}
+.back{
+    padding: 120px 0px 20px 30px;
+    width: 100px;
+    transition: .3s;
+}
+.back:hover{
+    cursor: pointer;
+    color: gray;
+}
+.container{
+    padding-bottom: 30px;
+    display: flex;
+    width: 1200px;
+    height: 80vh;
+    margin: auto;
+    align-items: center;
+}
+/* left box */
+.container .left{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    height: 100%;
+}
+.img-box{
+    max-width: 100%;
+    max-height:100%;
+    border: 10px rgb(65, 65, 65) solid;
+}
+
+/* revise and delete */
+.container .right .revise-delete-box{
+    display: flex;
+    flex: 10;
+    justify-content: center;
+    align-items: center;
+}
+.container .right .revise-delete-box .delete {
+    width: 80px;
+    height: 40px;
+    margin: 5px;
+    color: red;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: white;
+    border: 3px red solid;
+    transition: 0.3s;
+  }
+.container .right .revise-delete-box .delete:hover {
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
+.container .right .revise-delete-box .revise {
+    width: 80px;
+    height: 40px;
+    margin: 5px;
+    color: rgb(55, 255, 0);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: white;
+    border: 3px rgb(55, 255, 0) solid;
+    transition: 0.3s;
+  }
+.container .right .revise-delete-box .revise:hover {
+    background-color: rgb(55, 255, 0);
+    color: white;
+    cursor: pointer;
+}
+/* right box */
+.container .right{
+    flex: 1;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container .right .content{
+    flex: 1;
+}
+/* bid content */
+.container .right .content h1{
+    font-size: 1.8rem;
+    color: rgb(0, 19, 5);
+}
+.container .right .content .user{
+    font-size: 1rem;
+    color: gray;
+        margin-bottom: .5em;
+}
+.container .right .content .price{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.container .right .content .time{
+    font-size: 1rem;
+    margin-top: .5em;
+    margin-bottom: 1rem;
+}
+.description{
+    color: rgb(0, 19, 5);
+    margin: 15px 0;
+}  
+
+
+
+.bid-box{
+    display: flex;
+    align-items: center;
+}
+#bid-input{
+    padding: 5px;
+    height: 30px;
+}
+#bid-button{
+    width: 60px;
+    height: 30px;    
+}
+.bid{
+    font-size: 1rem;
+    color: gray;
+}
+.table-box{
+    overflow-y: scroll;
+    width: 900px;
+    height: 250px;
+    margin: auto;
+}
+.item-frame h2{
+    color: rgb(0, 19, 5);
+    font-weight: bolder;
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 30px;
+}
+.table-box .bid-detail-content{
+    margin-top: 10px;
+    width: 100%;
+    
+    overflow-y: scroll;
+}
+.table-box .bid-detail-content th{
+    font-weight: normal;
+    color: rgb(0, 19, 5);
+    width: 20%;
+    text-align: center;
+}
+.table-box .bid-detail-content td{
+    color: gray;
+    width: 20%;
+    height: 30px;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>111213015 蔡昇佑</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/styles/add_item.css') }}" />
+  </head>
+  <body>
+    {% include "navbar.html" %}
+    <section class="container">
+      <form action="/revisetodb" method="post" class="content" enctype="multipart/form-data" autocomplete="off">
+        <input type="file" name="UPLOAD" id="UPLOAD" accept="image/*" />
+        <label for="UPLOAD" class="left">
+          <div class="upload-button">
+            <svg xmlns="http://www.w3.org/2000/svg" height="48" width="42" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z"/></svg>
+          </div>
+          <div id="previewArea">
+            <img src="{{ url_for('static', filename='/img/' + item.item_id|string + '.jpg') }}">
+          </div>
+        </label>
+        
+        <div class="right">
+          <label for="ITEM_NAME">Product Name:</label>
+          <input type="text" name="ITEM_NAME" class="input-style" id="ITEM_NAME" value="{{item.item_name}}"/>
+          
+          <label for="START_PRICE">Start Price:</label>
+          <input type="number" name="START_PRICE" class="input-style" id="START_PRICE" value="{{item.start_price}}"/>
+          
+          <label for="DYNASTY">Dynasty:</label>
+          <input type="text" name="DYNASTY" class="input-style" id="DYNASTY" value="{{item.dynasty}}"/>
+          
+          <label for="MATERIAL">Material:</label>
+          <input type="text" name="MATERIAL" class="input-style" id="MATERIAL" value="{{item.material}}"/>
+          
+          <label for="ITEM_DESCRIPTION">Description:</label>
+          <textarea type="text" name="ITEM_DESCRIPTION" class="description" id="ITEM_DESCRIPTION">{{item.description}}</textarea>
+
+          <div class="button-box">
+            <div onClick="history.back()" class="cancel">
+              Cancel
+            </div>
+            <button type="submit" class="confirm">Revise</button>
+          </div>
+          <input type="hidden" name="USER_ID" value="user_id" />
+        </div>
+      </form>
+    </section>
+    {% include "bottom.html" %}
+    <script>
+      const uploadImg = document.getElementById('UPLOAD');
+      const previewArea = document.getElementById('previewArea');
+
+      // 監聽上傳狀況
+      uploadImg.addEventListener('change', function() {
+        // 清除之前的img
+        previewArea.innerHTML = '';
+
+        // 獲取上傳的圖片
+        const file = this.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(event) {
+            // 插入圖片
+            const img = document.createElement('img');
+            img.src = event.target.result;
+            previewArea.appendChild(img);
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+    </script>
+  </body>
+</html>
