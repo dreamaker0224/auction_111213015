@@ -29,7 +29,7 @@
             {% if item.user_id == login%}
             {% else %}
             <div class="bid-box">
-              <input type="number" name="PRICE" id="bid-input" />
+              <input type="number" name="PRICE" id="bid-input" required/>
               <input type="hidden" name="ITEM" value="{{item.item_id}}"/>
               <button type="submit" id="bid-button">Bid</button>
             </div>

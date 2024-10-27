@@ -50,7 +50,7 @@ def getLoginInfo(id,pwd):
 def getItem(id):
     sql='''
     SELECT I.*, U.user_name, 
-       (SELECT MAX(B.bid_price) FROM bids B WHERE B.item_id = I.item_id) AS max_price
+       (SELECT COALESCE(MAX(B.bid_price)) FROM bids B WHERE B.item_id = I.item_id) AS max_price
 	FROM items I 
 	JOIN users U ON I.user_id = U.user_id 
 	WHERE I.item_id = %s;

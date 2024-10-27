@@ -99,6 +99,31 @@ def item(item_id):
 def addItem():
     return render_template('additem.html')
 
+#revise items
+@app.route('/revise/<int:item_id>', methods=['GET','POST'])
+@login_required
+def revisePage(item_id):
+    item = getItem(item_id)
+    return render_template('revise.html', item = item)
+
+
+#to specific user's product page
+@app.route('/myproduct')
+@login_required
+def myProduct():
+    user_id = session.get('loginID')
+    product = getMyProduct(user_id)
+    return render_template('myproduct.html', data=product, list_title="My Product")
+
+#to specific user's bid product
+@app.route('/mybid')
+@login_required
+def myBid():
+    user_id = session.get('loginID')
+    product = getMyBid(user_id)
+    return render_template('mybid.html', data = product, list_title="My Bids")
+
+
 @app.route('/additemtodb', methods=['GET','POST'])
 @login_required
 def addItemToDB():
@@ -128,13 +153,6 @@ def deleteFromDB(item_id):
     deleteBid(item_id)
     deleteItem(item_id)
     return redirect('/myproduct')
-
-#revise items
-@app.route('/revise/<int:item_id>', methods=['GET','POST'])
-@login_required
-def revisePage(item_id):
-    item = getItem(item_id)
-    return render_template('revise.html', item = item)
 
 @app.route('/revisetodb', methods=['GET','POST'])
 @login_required
@@ -168,24 +186,12 @@ def bid():
     form = request.form
     price = form['PRICE']
     item_id = form['ITEM']
-    max_price = checkPrice(item_id)
-    print(f"max_price equal to {max_price['max_price']}")
-    if float(price) <= float(max_price['max_price']):
+    tmp_item = getItem(item_id)
+    max_price = tmp_item['max_price']
+    if max_price == None: max_price = "0"
+    print(f"aaaaaflasdhflajsd;flijweoa{max_price}")
+    if float(price) <= float(max_price) or float(price) <= float(tmp_item['start_price']):
         flash("Your bid need to be higher than current price!")
         return redirect(f"/item/{item_id}")
     addBid(item_id,user_id,price,time)
     return redirect(f"/item/{item_id}")
-
-@app.route('/myproduct')
-@login_required
-def myProduct():
-    user_id = session.get('loginID')
-    product = getMyProduct(user_id)
-    return render_template('myproduct.html', data=product, list_title="My Product")
-
-@app.route('/mybid')
-@login_required
-def myBid():
-    user_id = session.get('loginID')
-    product = getMyBid(user_id)
-    return render_template('mybid.html', data = product, list_title="My Bids")

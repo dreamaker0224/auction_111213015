@@ -65,9 +65,12 @@
   }
   .product-list .container .img-box{
     height: 60%;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: rgb(35, 35, 35);
     img {
+      display: block;
       object-fit: cover;
       max-width: 100%;
       max-height: 100%;
