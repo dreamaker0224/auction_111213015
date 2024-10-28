@@ -25,7 +25,7 @@
   justify-content: space-around;
   align-items: center;
 }
-.navbar .menu li {
+.navbar .menu li a{
   margin: 20px;
   font-size: 15px;
   width: 100px;
@@ -39,12 +39,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.navbar .menu li a {
-  color: white;
   text-decoration: none;
 }
-.navbar .menu li:hover {
+.navbar .menu li a:hover {
   background-color: rgb(0, 119, 32);
 }
 

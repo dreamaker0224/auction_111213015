@@ -20,13 +20,12 @@
 /* product-list */
 .product-list {
     margin: auto;
-    width: 1380px;
     display: flex;
+    width: 1320px;
     align-items: center;
     flex-wrap: wrap;
     padding: 30px 0px;
   }
-  
   .container {
     width: 300px;
     box-shadow: 2px 2px 10px rgb(0, 19, 5);
@@ -62,6 +61,7 @@
   .container p {
     margin: 5px;
     font-size: 18px;
+    color: rgb(0, 19, 5);
   }
   .product-list .container .img-box{
     height: 60%;
@@ -81,4 +81,21 @@
     padding: 5px;
     text-decoration: none;
     color: rgb(0, 19, 5);
+  }
+
+  .product-section .seemore a{
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    background-color: rgb(0, 19, 5);
+    display: block;
+    width: 100px;
+    margin: 20px auto;
+    padding: 10px;
+    transition: .3s;
+    display: block;
+  }
+  .product-section .seemore a:hover{
+    background-color: rgb(5, 114, 34);
+    cursor: pointer;
   }

@@ -85,20 +85,7 @@ h2 {
   text-decoration: none;
   color: rgb(0, 19, 5);
 }
-.product-section .seemore{
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  background-color: rgb(0, 19, 5);
-  display: block;
-  width: 100px;
-  margin: 20px auto;
-  padding: 10px;
-  transition: .3s;
-}
-.product-section .seemore:hover{
-  background-color: rgb(5, 114, 34);
-}
+
 
 
 

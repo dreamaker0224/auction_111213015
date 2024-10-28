@@ -76,7 +76,7 @@ def registing():
 @app.route('/')
 def home():
     dat = getAllItems()
-    return render_template('index.html',data = dat, list_title="Hot Product")   
+    return render_template('index.html',data = dat[:4], list_title="Hot Product")   
 
 # auction list
 @app.route('/auction')
@@ -124,6 +124,15 @@ def myBid():
     return render_template('mybid.html', data = product, list_title="My Bids")
 
 
+
+
+
+
+
+
+
+
+#add product to db
 @app.route('/additemtodb', methods=['GET','POST'])
 @login_required
 def addItemToDB():
@@ -154,6 +163,7 @@ def deleteFromDB(item_id):
     deleteItem(item_id)
     return redirect('/myproduct')
 
+#revise product to db
 @app.route('/revisetodb', methods=['GET','POST'])
 @login_required
 def reviseToDB():
@@ -188,10 +198,11 @@ def bid():
     item_id = form['ITEM']
     tmp_item = getItem(item_id)
     max_price = tmp_item['max_price']
-    if max_price == None: max_price = "0"
-    print(f"aaaaaflasdhflajsd;flijweoa{max_price}")
-    if float(price) <= float(max_price) or float(price) <= float(tmp_item['start_price']):
+    if max_price == None: max_price = 0
+    if float(price) <= float(max_price) or float(price) < float(tmp_item['start_price']):
         flash("Your bid need to be higher than current price!")
         return redirect(f"/item/{item_id}")
     addBid(item_id,user_id,price,time)
     return redirect(f"/item/{item_id}")
+    
+    

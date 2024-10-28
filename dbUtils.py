@@ -93,7 +93,8 @@ def addItemDB(item_name, start_price, dynasty, material, description, time, user
 def getMyProduct(user_id):
     sql='''
     SELECT I.*, 
-       COALESCE(MAX(B.bid_price), 0) AS max_price
+       COALESCE(MAX(B.bid_price), 0) AS max_price,
+       (SELECT COUNT(*) FROM bids WHERE item_id = I.item_id) AS bid_count
     FROM items I 
     LEFT JOIN bids B ON I.item_id = B.item_id
     WHERE I.user_id = %s

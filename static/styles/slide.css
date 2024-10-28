@@ -85,7 +85,7 @@ body{
   animation: animate 1s ease-in-out 0.3s 1 forwards;
 }
 
-.slide-content button {
+.slide-content a {
   padding: 10px 20px;
   border: none;
   cursor: pointer;
@@ -93,10 +93,12 @@ body{
   opacity: 0;
   transition: 0.3s;
   color: white;
+  text-decoration: none;
+  display: inline-block;
   background-color: #001809;
   animation: animate 1s ease-in-out 0.6s 1 forwards;
 }
-.slide-content button:hover {
+.slide-content a:hover {
   color: #001809;
   background-color: white;
 }
