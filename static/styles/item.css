@@ -73,23 +73,19 @@
     cursor: pointer;
 }
 .container .right .revise-delete-box .revise {
-    width: 80px;
-    height: 40px;
-    margin: 5px;
-    color: rgb(55, 255, 0);
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
-    font-weight: 600;
-    background-color: white;
-    border: 3px rgb(55, 255, 0) solid;
-    transition: 0.3s;
+  width: 80px;
+  height: 40px;
+  margin: 5px;
+  font-size: 14px;
+  color: white;
+  outline: none;
+  background-color: rgb(5, 132, 20);
+  border: 2px rgb(5, 132, 20) solid;
+  transition: .3s;
   }
 .container .right .revise-delete-box .revise:hover {
-    background-color: rgb(55, 255, 0);
-    color: white;
+    background-color: rgb(3, 59, 9);
+    border: 2px rgb(3, 59, 9) solid;
     cursor: pointer;
 }
 /* right box */

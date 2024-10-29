@@ -108,7 +108,7 @@ def getMyProduct(user_id):
 #get current user's bid product
 def getMyBid(user_id):
     sql='''
-    SELECT I.*, B.bid_price, B.user_id
+    SELECT I.*, B.bid_price, B.user_id,(SELECT COUNT(*) FROM bids WHERE item_id = I.item_id) AS bid_count
 	FROM Items I
 	JOIN (
     	SELECT item_id, MAX(bid_price) AS bid_price, user_id
@@ -148,17 +148,36 @@ def deleteItem(item_id):
     return 
 
 #revise item
-def reviseDB(item_name, start_price, dynasty, material, description, time, user_id):
-    sql='''INSERT INTO items (item_name,start_price, dynasty, material, description,start_time,user_id) VALUES (%s,%s,%s,%s,%s,%s,%s);'''
-    param = (item_name, start_price, dynasty, material, description, time, user_id,)
+def reviseDB(item_name, start_price, dynasty, material, description, time, item_id):
+    sql='''
+        UPDATE items 
+        SET item_name = %s, 
+            start_price = %s, 
+            dynasty = %s, 
+            material = %s, 
+            description = %s, 
+            start_time = %s 
+        WHERE item_id = %s;
+    '''
+    param = (item_name, start_price, dynasty, material, description, time, item_id,)
     cursor.execute(sql,param)
     conn.commit()
-    item_id = cursor.lastrowid
-    return item_id
+    return
 
+
+#register
 def addUser(user_name,account,password):
     sql = "INSERT INTO users (user_name,user_account,user_password) VALUES (%s,%s,%s);"
     param = (user_name,account,password,)
     cursor.execute(sql,param)
     conn.commit()
     return
+
+
+#search
+def searchFromDB(search_input):
+    sql = "SELECT * FROM items WHERE item_name LIKE %s;"
+    param = (f"%{search_input}%",)
+    cursor.execute(sql,param)
+    items = cursor.fetchall()
+    return items

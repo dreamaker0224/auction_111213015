@@ -164,9 +164,9 @@ def deleteFromDB(item_id):
     return redirect('/myproduct')
 
 #revise product to db
-@app.route('/revisetodb', methods=['GET','POST'])
+@app.route('/revisetodb/<int:item_id>', methods=['GET','POST'])
 @login_required
-def reviseToDB():
+def reviseToDB(item_id):
     # store text info
     form = request.form
     item_name = form['ITEM_NAME']
@@ -174,9 +174,8 @@ def reviseToDB():
     dynasty = form['DYNASTY']
     material = form['MATERIAL']
     description = form['ITEM_DESCRIPTION']
-    time = datetime.now()
-    user_id = session.get('loginID')
-    item_id = reviseDB(item_name,start_price, dynasty, material, description, time , user_id)
+    time = datetime.now()   
+    reviseDB(item_name,start_price, dynasty, material, description, time , item_id)
     file = request.files['UPLOAD']
     # store img
     if file and allowed_file(file.filename):
@@ -206,3 +205,11 @@ def bid():
     return redirect(f"/item/{item_id}")
     
     
+#search
+@app.route('/search', methods=['POST'])
+def search():
+    form = request.form
+    search_input = form['SEARCH']
+    product = searchFromDB(search_input)
+    print(product)
+    return render_template('searchpage.html', data=product, list_title="Search")

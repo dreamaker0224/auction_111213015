@@ -8,8 +8,21 @@
   </head>
   <body>
   <footer class="footer">
-    <div class="bottom"></div>
-    <div class="copyright">&copy;Create by Justin Tsai 111213015</div>
+    <div class="bottom">
+      <div class="bottom-left">
+        <p class="bottom-title">111213015 Sheng Yu, Tsai</p>
+        <hr/>
+        <ul>
+          <li onClick="location.href='/';">Home</li>
+          <li onClick="location.href='/auction';">Auction</li>
+          <li onClick="location.href='/';">Contact</li>
+        </ul>
+      </div>
+      <div class="bottom-right">
+        <img src="{{ url_for('static', filename='/img/split.jpg') }}"/>
+      </div>
+    </div>
+    <div class="copyright">&copy; Create by Justin Tsai 111213015</div>
   </footer>
 </body>
 </html>

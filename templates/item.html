@@ -52,7 +52,7 @@
               <input type="hidden" name="ITEM_ID" value={{item.item_id}}/>
             </form>
             <form action="/delete/{{item.item_id}}" method="post">
-              <button type="submit"  class="delete">Delete</button>
+              <button type="submit"  class="delete" onClick="return confirm('Are you sure to delete this item?')">Delete</button>
               <input type="hidden" name="ITEM_ID" value={{item.item_id}}/>
             </form>
           </div>

@@ -9,7 +9,7 @@
   <body>
     {% include "navbar.html" %}
     <section class="container">
-      <form action="/revisetodb" method="post" class="content" enctype="multipart/form-data" autocomplete="off">
+      <form action="/revisetodb/{{item.item_id}}" method="post" class="content" enctype="multipart/form-data" autocomplete="off">
         <input type="file" name="UPLOAD" id="UPLOAD" accept="image/*" />
         <label for="UPLOAD" class="left">
           <div class="upload-button">
@@ -22,25 +22,25 @@
         
         <div class="right">
           <label for="ITEM_NAME">Product Name:</label>
-          <input type="text" name="ITEM_NAME" class="input-style" id="ITEM_NAME" value="{{item.item_name}}"/>
+          <input type="text" name="ITEM_NAME" class="input-style" id="ITEM_NAME" value="{{item.item_name}}" required/>
           
           <label for="START_PRICE">Start Price:</label>
-          <input type="number" name="START_PRICE" class="input-style" id="START_PRICE" value="{{item.start_price}}"/>
+          <input type="number" name="START_PRICE" class="input-style" style="opacity:0.5;" id="START_PRICE" value="{{item.start_price}}" readonly/>
           
           <label for="DYNASTY">Dynasty:</label>
-          <input type="text" name="DYNASTY" class="input-style" id="DYNASTY" value="{{item.dynasty}}"/>
+          <input type="text" name="DYNASTY" class="input-style" id="DYNASTY" value="{{item.dynasty}}" required/>
           
           <label for="MATERIAL">Material:</label>
-          <input type="text" name="MATERIAL" class="input-style" id="MATERIAL" value="{{item.material}}"/>
+          <input type="text" name="MATERIAL" class="input-style" id="MATERIAL" value="{{item.material}}" required/>
           
           <label for="ITEM_DESCRIPTION">Description:</label>
-          <textarea type="text" name="ITEM_DESCRIPTION" class="description" id="ITEM_DESCRIPTION">{{item.description}}</textarea>
+          <textarea type="text" name="ITEM_DESCRIPTION" class="description" id="ITEM_DESCRIPTION" required/>{{item.description}}</textarea>
 
           <div class="button-box">
             <div onClick="history.back()" class="cancel">
               Cancel
             </div>
-            <button type="submit" class="confirm">Revise</button>
+            <button type="submit" class="confirm" onClick="return confirm('Are sure to revise this item?');">Revise</button>
           </div>
           <input type="hidden" name="USER_ID" value="user_id" />
         </div>
