@@ -153,6 +153,7 @@ def addItemToDB():
         upload_path = os.path.abspath(os.path.dirname(__file__))
         upload_path = os.path.join(upload_path,'static', 'img', file.filename)
         file.save(upload_path)
+        
     return redirect('/myproduct')
 
 #delete item frome database
@@ -204,7 +205,7 @@ def bid():
     addBid(item_id,user_id,price,time)
     return redirect(f"/item/{item_id}")
     
-    
+
 #search
 @app.route('/search', methods=['POST'])
 def search():
